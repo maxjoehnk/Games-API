@@ -32,6 +32,14 @@ public abstract class Game {
 		return plugin;
 	}
 	
+	public void addRule(GameRule rule) {
+		rules.add(rule);
+	}
+	
+	public void removeRule(GameRule rule) {
+		rules.remove(rule);
+	}
+	
 	public List<GameRule> getRules() {
 		return rules;
 	}
