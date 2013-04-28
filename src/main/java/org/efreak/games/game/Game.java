@@ -32,6 +32,10 @@ public abstract class Game {
 		return plugin;
 	}
 	
+	public List<GameRule> getRules() {
+		return rules;
+	}
+	
 	public boolean startGame(String id, GameInstance instance) {
 		if (instances.isEmpty()) {
 			for (GameListener l : listener) l.register();
