@@ -2,11 +2,12 @@ package org.efreak.games;
 
 import org.bukkit.entity.Player;
 import org.efreak.games.game.Game;
+import org.efreak.games.game.GameInstance;
 
 public class GamePlayer {
 
 	private boolean inGame = false;
-	private Game game = null;
+	private GameInstance game = null;
 	private final Player player;
 	
 	public GamePlayer(Player player) {
@@ -17,7 +18,7 @@ public class GamePlayer {
 		return inGame;
 	}
 	
-	public Game getGame() {
+	public GameInstance getGame() {
 		return game;
 	}
 	
