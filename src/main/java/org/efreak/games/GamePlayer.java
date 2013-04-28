@@ -1,7 +1,6 @@
 package org.efreak.games;
 
 import org.bukkit.entity.Player;
-import org.efreak.games.game.Game;
 import org.efreak.games.game.GameInstance;
 
 public class GamePlayer {
