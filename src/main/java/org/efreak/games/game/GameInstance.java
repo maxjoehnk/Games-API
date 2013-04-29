@@ -13,13 +13,12 @@ public abstract class GameInstance {
 	private boolean isRunning = false;
 	private final Game game;
 	private final List<GamePlayer> players;
-	private final List<GameLobby> lobbies;
 	private final List<GameRule> rules;
+	private GameLobby lobby;
 	
 	public GameInstance(Game game) {
 		this.game = game;
 		players = new ArrayList<GamePlayer>();
-		lobbies = new ArrayList<GameLobby>();
 		rules = new ArrayList<GameRule>();
 		rules.addAll(game.getRules());
 	}
@@ -58,5 +57,17 @@ public abstract class GameInstance {
 	
 	public void addRule(GameRule rule) {
 		rules.add(rule);
+	}
+	
+	public boolean isRunning() {
+		return isRunning;
+	}
+	
+	public void setLobby(GameLobby lobby) {
+		this.lobby = lobby;
+	}
+
+	public GameLobby getLobby() {
+		return lobby;
 	}
 }
