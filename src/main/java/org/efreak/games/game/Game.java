@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
+import org.efreak.games.Configuration;
+import org.efreak.games.Games;
 import org.efreak.games.game.events.GameStartEvent;
 import org.efreak.games.game.events.GameStopEvent;
 import org.efreak.games.game.rules.GameRule;
@@ -20,12 +22,25 @@ import org.efreak.games.game.rules.GameRule;
  */
 public abstract class Game {
 
+	private static Configuration config;
+	
 	private String name, desc;
 	private Plugin plugin;
 	private List<GameListener> listener;
 	private HashMap<String, GameInstance> instances;
 	private List<GameRule> rules;
 	
+	static {
+		config = Games.getConfiguration();
+	}
+	
+	public Game(String name, String desc) {
+		this.name = name;
+		this.desc = desc;
+		String configPath = "Games." + name + ".";
+		config.update(configPath + ".Enabled", true);
+	}
+
 	/**
 	 * 
 	 * Load everything which is needed for the game

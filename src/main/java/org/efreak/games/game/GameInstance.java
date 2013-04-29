@@ -3,24 +3,36 @@ package org.efreak.games.game;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.efreak.games.Configuration;
 import org.efreak.games.GamePlayer;
+import org.efreak.games.Games;
 import org.efreak.games.game.actions.PlayerJoinAction;
 import org.efreak.games.game.actions.PlayerLeaveAction;
 import org.efreak.games.game.rules.GameRule;
 
 public abstract class GameInstance {
 
+	private static Configuration config;
+	
 	private boolean isRunning = false;
 	private final Game game;
 	private final List<GamePlayer> players;
 	private final List<GameRule> rules;
 	private GameLobby lobby;
+	private String id;
 	
-	public GameInstance(Game game) {
+	static {
+		config = Games.getConfiguration();
+	}
+	
+	public GameInstance(Game game, String id) {
 		this.game = game;
 		players = new ArrayList<GamePlayer>();
 		rules = new ArrayList<GameRule>();
 		rules.addAll(game.getRules());
+		this.id = id;
+		String configPath = "Games." + game.getName() + ".Instances." + id + ".";
+		
 	}
 	
 	public abstract boolean start();
