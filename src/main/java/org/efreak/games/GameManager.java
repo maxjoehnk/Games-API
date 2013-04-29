@@ -1,5 +1,6 @@
 package org.efreak.games;
 
+import java.util.Collection;
 import java.util.HashMap;
 
 import org.efreak.games.game.Game;
@@ -23,5 +24,12 @@ public class GameManager {
 		games.get(game).startGame(id, instance);
 	}
 	
+	public static HashMap<String, Game> getGames() {
+		return games;
+	}
+	
+	public static Collection<Game> getGameList() {
+		return games.values();
+	}
 }
  
