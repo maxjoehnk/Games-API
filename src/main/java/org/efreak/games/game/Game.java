@@ -1,5 +1,6 @@
 package org.efreak.games.game;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -24,19 +25,23 @@ public abstract class Game {
 
 	private static Configuration config;
 	
-	private String name, desc;
-	private Plugin plugin;
-	private List<GameListener> listener;
-	private HashMap<String, GameInstance> instances;
-	private List<GameRule> rules;
+	protected final String name, desc;
+	protected final Plugin plugin;
+	protected final List<GameListener> listener;
+	protected final HashMap<String, GameInstance> instances;
+	protected final List<GameRule> rules;
 	
 	static {
 		config = Games.getConfiguration();
 	}
 	
-	public Game(String name, String desc) {
+	public Game(String name, String desc, Plugin plugin) {
 		this.name = name;
 		this.desc = desc;
+		this.plugin = plugin;
+		listener = new ArrayList<GameListener>();
+		instances = new HashMap<String, GameInstance>();
+		rules = new ArrayList<GameRule>();
 		String configPath = "Games." + name + ".";
 		config.update(configPath + ".Enabled", true);
 	}
