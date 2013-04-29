@@ -20,7 +20,7 @@ public class GameManager {
 	}
 	
 	public static void startGame(String id, String game) {
-		GameInstance instance = games.get(game).createInstance();
+		GameInstance instance = games.get(game).createInstance(id);
 		games.get(game).startGame(id, instance);
 	}
 	

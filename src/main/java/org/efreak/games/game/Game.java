@@ -54,7 +54,7 @@ public abstract class Game {
 	 * 
 	 * @return the created Instance
 	 */
-	public abstract GameInstance createInstance();
+	public abstract GameInstance createInstance(String id);
 	
 	/**
 	 * 
