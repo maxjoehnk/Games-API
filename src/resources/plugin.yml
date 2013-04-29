@@ -2,3 +2,10 @@ name: Games
 main: org.efreak.games.Games
 version: 1.0
 author: e-freak
+commands:
+  game:
+    description: The Main Command for the managing of the available Games
+    usage: Use /game help for more Help
+  games:
+    description: List all available Games
+    usage: /games
