@@ -1,0 +1,10 @@
+<project>
+  <body>
+    <menu name="Overview">
+      <item name="Introduction" href="index.html"/>
+      <item name="Configuration" href="config.html"/>
+      <item name="Command Reference" href="cmds.html"/>
+    </menu>
+    <menu ref="reports"/>
+  </body>
+</project>
