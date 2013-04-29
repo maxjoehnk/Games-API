@@ -1,5 +1,6 @@
 package org.efreak.games.game;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -90,6 +91,24 @@ public abstract class Game {
 	 */
 	public List<GameRule> getRules() {
 		return rules;
+	}
+	
+	/**
+	 * 
+	 * Returns the HashMap with the ID's of the GameInstances
+	 * 
+	 * @return A HashMap with all GameInstances
+	 */
+	public HashMap<String, GameInstance> getInstances() {
+		return instances;
+	}
+	
+	/**
+	 * 
+	 * @return A List of all GameInstances
+	 */
+	public Collection<GameInstance> getInstanceList() {
+		return instances.values();
 	}
 	
 	/**
