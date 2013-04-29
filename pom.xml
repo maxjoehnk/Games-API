@@ -37,7 +37,7 @@
   
   <ciManagement>
     <system>jenkins</system>
-    <url>http://98.164.246.75:8080/</url>
+    <url>http://98.164.246.75:8080/job/Games%20API/</url>
   </ciManagement>
   
   <packaging>jar</packaging>
@@ -67,7 +67,7 @@
   <build>
     <resources>
       <resource>
-        <directory>src/resources</directory>
+        <directory>src/main/resources</directory>
       </resource>
     </resources>
     <plugins>
