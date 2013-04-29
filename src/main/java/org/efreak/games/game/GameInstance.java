@@ -10,12 +10,18 @@ import org.efreak.games.game.rules.GameRule;
 
 public abstract class GameInstance {
 
+	private boolean isRunning = false;
 	private final Game game;
 	private final List<GamePlayer> players;
+	private final List<GameLobby> lobbies;
+	private final List<GameRule> rules;
 	
 	public GameInstance(Game game) {
 		this.game = game;
 		players = new ArrayList<GamePlayer>();
+		lobbies = new ArrayList<GameLobby>();
+		rules = new ArrayList<GameRule>();
+		rules.addAll(game.getRules());
 	}
 	
 	public abstract boolean start();
@@ -26,15 +32,16 @@ public abstract class GameInstance {
 	}
 	
 	public boolean join(GamePlayer player) {
-		for (GameRule rule : game.getRules()) {
+		for (GameRule rule : rules) {
 			if (!rule.isActionValid(this, new PlayerJoinAction())) return false;
 		}
 		players.add(player);
+		player.setGame(this);
 		return true;
 	}
 	
 	public boolean leave(GamePlayer player) {
-		for (GameRule rule : game.getRules()) {
+		for (GameRule rule : rules) {
 			if (!rule.isActionValid(this, new PlayerLeaveAction())) return false;
 		}
 		players.remove(player);
@@ -43,5 +50,13 @@ public abstract class GameInstance {
 	
 	public List<GamePlayer> getPlayers() {
 		return players;
+	}
+	
+	public void removeRule(GameRule rule) {
+		rules.remove(rule);
+	}
+	
+	public void addRule(GameRule rule) {
+		rules.add(rule);
 	}
 }
