@@ -1,6 +1,6 @@
 name: Games
 main: org.efreak.games.Games
-version: 1.0
+version: ${version}
 author: e-freak
 commands:
   game:
