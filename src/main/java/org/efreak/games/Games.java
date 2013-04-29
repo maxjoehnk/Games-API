@@ -2,12 +2,9 @@ package org.efreak.games;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-import org.efreak.games.Database;
 import org.efreak.games.commands.GameCommandExecutor;
 import org.efreak.games.databases.MySQL;
 import org.efreak.games.databases.SQLite;
-import org.efreak.games.Configuration;
-import org.efreak.games.IOManager;
 
 public class Games extends JavaPlugin {
 
