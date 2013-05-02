@@ -5,10 +5,4 @@
 
 # Build stuff
 /bin
-
-#Javadoc
-/doc
-
-#Libraries
-/lib/*
-!/lib/plugins
+/target
