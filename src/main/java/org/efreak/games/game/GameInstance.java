@@ -19,7 +19,7 @@ public abstract class GameInstance {
 	private final List<GamePlayer> players;
 	private final List<GameRule> rules;
 	private GameLobby lobby;
-	private String id;
+	private String id, configPath;
 	
 	static {
 		config = Games.getConfiguration();
@@ -31,7 +31,7 @@ public abstract class GameInstance {
 		rules = new ArrayList<GameRule>();
 		rules.addAll(game.getRules());
 		this.id = id;
-		String configPath = "Games." + game.getName() + ".Instances." + id + ".";
+		configPath = "Games." + game.getName() + ".Instances." + id + ".";
 		
 	}
 	
@@ -42,9 +42,13 @@ public abstract class GameInstance {
 		return game;
 	}
 	
+	public String getId() {
+		return id;
+	}
+	
 	public boolean join(GamePlayer player) {
 		for (GameRule rule : rules) {
-			if (!rule.isActionValid(this, new PlayerJoinAction())) return false;
+			if (!rule.isActionValid(this, new PlayerJoinAction(player))) return false;
 		}
 		players.add(player);
 		player.setGame(this);
@@ -53,7 +57,7 @@ public abstract class GameInstance {
 	
 	public boolean leave(GamePlayer player) {
 		for (GameRule rule : rules) {
-			if (!rule.isActionValid(this, new PlayerLeaveAction())) return false;
+			if (!rule.isActionValid(this, new PlayerLeaveAction(player))) return false;
 		}
 		players.remove(player);
 		return true;
