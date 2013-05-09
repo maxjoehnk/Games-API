@@ -1,5 +1,11 @@
 package org.efreak.games.game.actions;
 
-public class PlayerDeathAction extends GameAction {
+import org.efreak.games.GamePlayer;
+
+public class PlayerDeathAction extends PlayerAction {
+
+	public PlayerDeathAction(GamePlayer player) {
+		super(player);
+	}
 
 }

@@ -1,5 +1,11 @@
 package org.efreak.games.game.actions;
 
-public class PvPAction extends GameAction {
+import org.efreak.games.GamePlayer;
+
+public class PvPAction extends PlayerAction {
+
+	public PvPAction(GamePlayer player) {
+		super(player);
+	}
 
 }
