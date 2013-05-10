@@ -5,7 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
@@ -87,6 +89,26 @@ public class Configuration{
 		update("IO.HelpHeader", "GAMES HELP(%page%/%pages%)");
 		update("IO.HelpFormat", "&e%cmd% %args%: &f%desc%");
 		update("Database.System", "SQLite");
+		update("WaveSystem.Points.AngryWolf", 3);
+		update("WaveSystem.Points.Blaze", 5);
+		update("WaveSystem.Points.CaveSpider", 4);
+		update("WaveSystem.Points.Creeper", 4);
+		update("WaveSystem.Points.EnderDragon", 10);
+		update("WaveSystem.Points.Enderman", 6);
+		update("WaveSystem.Points.Ghast", 2);
+		update("WaveSystem.Points.MagmaCube", 1);
+		update("WaveSystem.Points.Pigman", 2);
+		update("WaveSystem.Points.Silverfish", 3);
+		update("WaveSystem.Points.Skeleton", 3);
+		update("WaveSystem.Points.Slime", 1);
+		update("WaveSystem.Points.Spider", 2);
+		update("WaveSystem.Points.SpiderJockey", 4);
+		update("WaveSystem.Points.Witch", 3);
+		update("WaveSystem.Points.Wither", 8);
+		update("WaveSystem.Points.WitherSkeleton", 6);
+		update("WaveSystem.Points.Zombie", 2);
+		update("WaveSystem.Points.ZombieVillager", 2);
+		update("WaveSystem.Disabled", Arrays.asList("EnderDragon", "Ghast", "Wither"));
 		config.save(configFile);
 	}
 		
@@ -124,6 +146,13 @@ public class Configuration{
 
 	public Object get(String path) {return config.get(path);}
 	public Object get(String path, Object def) {return config.get(path, def);}
+	
+	public ConfigurationSection getConfigurationSection(String path) {return config.getConfigurationSection(path);}
+	
+	public Set<String> getKeys(boolean deep) {return config.getKeys(deep);}
+	
+	public Set<String> getChilds(String path) {return config.getConfigurationSection(path).getKeys(false);}
+	public Set<String> getChilds(String path, boolean deep) {return config.getConfigurationSection(path).getKeys(deep);}
 	
 	public boolean update(String path, Object value) {
 		if (!config.contains(path)) {
