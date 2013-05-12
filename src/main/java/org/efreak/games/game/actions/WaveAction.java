@@ -2,12 +2,8 @@ package org.efreak.games.game.actions;
 
 import org.efreak.games.game.waves.Wave;
 
-public class WaveAction implements GameAction {
+public interface WaveAction extends GameAction {
 
-	private Wave wave;
-	
-	public WaveAction(Wave wave) {
-		this.wave = wave;
-	}
-	
+	public Wave getWave();
+	public boolean isBossWave();
 }
