@@ -2,10 +2,16 @@ package org.efreak.games.game.actions;
 
 import org.efreak.games.GamePlayer;
 
-public class PlayerDeathAction extends PlayerAction {
+public class PlayerDeathAction implements PlayerAction {
 
+	private GamePlayer player;
+	
 	public PlayerDeathAction(GamePlayer player) {
-		super(player);
+		this.player = player;
 	}
 
+	@Override
+	public GamePlayer getPlayer() {
+		return player;
+	}
 }

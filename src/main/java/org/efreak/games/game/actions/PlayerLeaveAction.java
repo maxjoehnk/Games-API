@@ -2,10 +2,16 @@ package org.efreak.games.game.actions;
 
 import org.efreak.games.GamePlayer;
 
-public class PlayerLeaveAction extends PlayerAction {
-
+public class PlayerLeaveAction implements PlayerAction {
+	
+	private GamePlayer player;
+	
 	public PlayerLeaveAction(GamePlayer player) {
-		super(player);
+		this.player = player;
 	}
 
+	@Override
+	public GamePlayer getPlayer() {
+		return player;
+	}
 }
