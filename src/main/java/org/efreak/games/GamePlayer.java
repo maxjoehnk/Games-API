@@ -10,8 +10,6 @@ import org.efreak.games.game.PlayerClass;
 
 public class GamePlayer {
 
-	private boolean inGame = false;
-	private boolean inLobby = false;
 	private GameInstance game = null;
 	private GameLobby lobby = null;
 	private final Player player;
@@ -26,17 +24,15 @@ public class GamePlayer {
 	}
 	
 	public boolean isInGame() {
-		return inGame;
+		return game != null;
 	}
 	
 	public boolean isInLobby() {
-		return inLobby;
+		return lobby != null;
 	}
 	
 	public void setGame(GameInstance game) {
 		this.game = game;
-		if (game != null) inGame = true;
-		else inGame = false;
 	}
 	
 	public GameInstance getGame() {
@@ -45,8 +41,6 @@ public class GamePlayer {
 	
 	public void setLobby(GameLobby lobby) {
 		this.lobby = lobby;
-		if (lobby != null) inLobby = true;
-		else inLobby = false;
 	}
 	
 	public GameLobby getLobby() {
@@ -55,6 +49,11 @@ public class GamePlayer {
 	
 	public Player getPlayer() {
 		return player;
+	}
+	
+	public void leaveTeam() {
+		Team team = getTeam();
+		if (team != null) team.removePlayer(player);
 	}
 	
 	public void setTeam(Team team) {
@@ -73,6 +72,10 @@ public class GamePlayer {
 	
 	public Scoreboard getScoreboard() {
 		return player.getScoreboard();
+	}
+	
+	public boolean hasPlayerClass() {
+		return playerClass != null;
 	}
 	
 	public PlayerClass getPlayerClass() {
@@ -97,5 +100,13 @@ public class GamePlayer {
 		player.getInventory().clear();
 		player.getInventory().setContents(invBackup);
 		player.getInventory().setArmorContents(armorBackup);
+	}
+
+	public void leaveGame() {
+		game = null;
+		lobby = null;
+		leaveTeam();
+		if (playerClass != null) restoreInventory();
+		playerClass = null;
 	}
 }
