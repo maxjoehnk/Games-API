@@ -12,6 +12,7 @@ import org.efreak.games.Games;
 import org.efreak.games.game.events.GameStartEvent;
 import org.efreak.games.game.events.GameStopEvent;
 import org.efreak.games.game.rules.GameRule;
+import org.efreak.games.game.rules.RulesList;
 
 /**
  * 
@@ -29,8 +30,8 @@ public abstract class Game {
 	protected final Plugin plugin;
 	protected final List<GameListener> listener;
 	protected final HashMap<String, GameInstance> instances;
-	protected final List<GameRule> rules;
-	
+	protected final RulesList rules;
+
 	static {
 		config = Games.getConfiguration();
 	}
@@ -41,7 +42,7 @@ public abstract class Game {
 		this.plugin = plugin;
 		listener = new ArrayList<GameListener>();
 		instances = new HashMap<String, GameInstance>();
-		rules = new ArrayList<GameRule>();
+		rules = new RulesList();
 		String configPath = "Games." + name + ".";
 		config.update(configPath + ".Enabled", true);
 	}
@@ -109,7 +110,7 @@ public abstract class Game {
 	 * 	
 	 * @return A List with all registered GameRules
 	 */
-	public List<GameRule> getRules() {
+	public RulesList getRules() {
 		return rules;
 	}
 	
